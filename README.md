@@ -1,4 +1,7 @@
 # AVANSAS
+
+* Projeyi kendi veri tabanınıza bağladıktan sonra migration işlemi yaptığında default datalar veritabanınıza kaydedilecektir. Ek bir işlem yapmanıza gerek yoktur.
+
  Avansas .NET MVC project
 
 Proje Konusu:
