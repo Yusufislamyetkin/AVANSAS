@@ -1,0 +1,56 @@
+﻿@model Avansas.EntityLayer.Models.User
+@{
+    Layout = null;
+}
+
+
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<section>
+</section>
+<div class="login-wrap" style="margin-top:50px">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Giriş</label>
+        <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+        <div class="login-form">
+            <form asp-action="Login" method="post">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label">Kullanıcı Mail</label>
+                        <input id="user" type="text" class="input" asp-for="Mail">
+                        <br />
+                        <span style="margin-top:15px" asp-validation-for="Mail"></span>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Şifre</label>
+                        <input id="pass" type="password" class="input" asp-for="Password" data-type="password">
+                        <br />
+                        <span style="margin-top:15px" asp-validation-for="Password"></span>
+
+                        @if (TempData["WrongAcccess"] != null)
+                        { <div> <strong style="margin-top:15px; color:white;font-weight:bold"> Başarısız ! @TempData["WrongAcccess"]</strong> </div>   }
+                                                                                            
+
+                        @if (TempData["UpdateMyMail"] != null)
+                        {<div><strong style="margin-top:15px; color:white;font-weight:bold"> Hesabınız başarı ile güncellendi ! (Lütfen yeniden giriş yapın)</strong></div> }
+                                                                                                        
+
+                        @if (TempData["  DeleteMyCount"] != null)
+                        {<div> <strong style="margin-top:15px; color:white;font-weight:bold"> Hesabınız başarı ile silindi !</strong> </div>  }
+                                                                                                    
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Giriş Yap">
+                    </div>
+                    <div class="hr"></div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

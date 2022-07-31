@@ -1,0 +1,88 @@
+﻿@model Avansas.EntityLayer.Models.User
+@{
+
+    ViewData["Title"] = "Kullanıcı Oluştur";
+}
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div class="row p-3 border">
+
+
+
+        <div class="col-4">
+
+            <label>Kullanıcı Oluştur</label>
+        </div>
+
+        <div class="col-8">
+
+
+
+
+            <label style="margin-bottom:5px">Ad  <span style="margin-top:15px;margin-left:15px;color:crimson;font-weight:bold" asp-validation-for="Name"></span> </label>
+            <input asp-for="Name" class="form-control" />
+
+
+            <label style="margin-bottom:5px">Soyad  <span style="margin-top:15px;margin-left:15px;color:crimson;font-weight:bold" asp-validation-for="SurName"></span> </label>
+            <input asp-for="SurName" class="form-control" />
+
+
+            <label style="margin-bottom:5px">Şifre  <span style="margin-top:15px;margin-left:15px;color:crimson;font-weight:bold" asp-validation-for="Password"></span> </label>
+            <input type="password" asp-for="Password" type="password" class="form-control" />
+
+
+            <label style="margin-bottom:5px">Mail  <span style="margin-top:15px;margin-left:15px;color:crimson;font-weight:bold" asp-validation-for="Mail"></span> </label>
+            <input asp-for="Mail" class="form-control" />
+
+            <label style="margin-bottom:5px">Telefon Numarası  (Numaranın başında 0 olmalalı !)  <span style="margin-top:15px;margin-left:15px;color:crimson;font-weight:bold" asp-validation-for="GsmNumber"></span> </label>
+            <input type="number" asp-for="GsmNumber" class="form-control" />
+
+
+
+      
+
+            <label style="margin-top:25px;margin-right:25px">Doğum Tarihi</label>
+            @Html.EditorFor(model => model.BirthDate,new {  @class = "form-control"})
+            @Html.ValidationMessageFor(x => x.BirthDate)
+
+              @if (TempData["AddWrong"] != null)
+                        {
+                            <div >
+                                
+                                <strong style="margin-top:15px; color:crimson;font-weight:bold"> Başarısız ! @TempData["AddWrong"]</strong>
+                            </div>
+
+                        }
+
+
+        </div>
+
+
+
+        <div>
+        </div>
+
+
+        <div class="col-8 offset-4" style="margin-top:25px">
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary form-control"> Kaydet</button>
+                </div>
+
+                <div>
+                    <a asp-action="UserList" class="btn btn-success form-control"> İptal </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
